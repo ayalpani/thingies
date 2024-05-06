@@ -18,12 +18,7 @@ export function App() {
 
   return (
     <Flex flex={1} flexDirection="column">
-      <div data-netlify-identity-menu></div>
-      {user === null && (
-        <div onClick={() => netlifyIdentity.open()}>
-          Login with Netlify Identity
-        </div>
-      )}
+      {/* <div data-netlify-identity-menu></div> */}
 
       {user !== null && (
         <Flex onClick={() => netlifyIdentity.logout()}>Logout</Flex>

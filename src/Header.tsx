@@ -1,7 +1,10 @@
 import {Flex} from "@chakra-ui/react";
 import {constants} from "./constants";
+import netlifyIdentity from "netlify-identity-widget";
 
 export function Header() {
+  const user = netlifyIdentity.currentUser();
+
   return (
     <Flex
       alignItems="center"
@@ -12,7 +15,9 @@ export function Header() {
       paddingLeft="20px"
       fontWeight="bold"
     >
-      thingies.
+      thingies. (
+      {user?.email || <span onClick={() => netlifyIdentity.open()}>Login</span>}
+      )
     </Flex>
   );
 }
