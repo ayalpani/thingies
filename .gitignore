@@ -23,3 +23,6 @@ backend/thingies-google-cloud.json
 *.njsproj
 *.sln
 *.sw?
+
+# Local Netlify folder
+.netlify

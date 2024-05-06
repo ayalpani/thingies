@@ -1,0 +1,10 @@
+[build]
+functions = "backend/src/functions"
+command = "npm run build"
+publish = "dist"
+
+# Optional: redirects if necessary, for instance, to handle SPA routing
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
