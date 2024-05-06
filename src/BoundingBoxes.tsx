@@ -23,7 +23,7 @@ export function BoundingBoxes() {
           <Text
             className="BoundingBoxLabel"
             color="white"
-            fontSize="11px"
+            fontSize="20px"
             backgroundColor="rgba(0, 0, 0, 0.5)"
             padding="3px 5px"
             position="absolute"

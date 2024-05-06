@@ -1,18 +1,6 @@
 import { Handler } from '@netlify/functions';
 import { ImageAnnotatorClient, protos } from '@google-cloud/vision';
 
-// Load credentials from the environment variable
-const rawCredentials = process.env.GOOGLE_CREDENTIALS!;
-const credentials = JSON.parse(rawCredentials);
-
-// Initialize the Vision API client with your credentials
-const client = new ImageAnnotatorClient({
-    credentials: {
-        private_key: credentials.private_key,
-        client_email: credentials.client_email,
-    },
-    projectId: credentials.project_id,
-});
 
 // Type guard to ensure `objectLocalization` method is available
 function isObjectLocalizationAvailable(client: ImageAnnotatorClient): client is ImageAnnotatorClient & {
@@ -23,6 +11,20 @@ function isObjectLocalizationAvailable(client: ImageAnnotatorClient): client is 
 
 const handler: Handler = async (event) => {
     try {
+        // Load credentials from the environment variable
+        const rawCredentials = process.env.GOOGLE_CREDENTIALS!;
+        console.log(rawCredentials)
+        const credentials = JSON.parse(rawCredentials);
+
+        // Initialize the Vision API client with your credentials
+        const client = new ImageAnnotatorClient({
+            credentials: {
+                private_key: credentials.private_key,
+                client_email: credentials.client_email,
+            },
+            projectId: credentials.project_id,
+        });
+
         // Check if an image is uploaded in the event body
         if (!event.body || !event.isBase64Encoded) {
             return {

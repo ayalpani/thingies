@@ -3,7 +3,6 @@ import {Flex, Image, Text, Input} from "@chakra-ui/react";
 import useAppStore from "./useStore";
 import {ActionButton} from "./ActionButton";
 import {BoundingBoxes} from "./BoundingBoxes";
-import {BackgroundImage} from "./BackgroundImage";
 import {constants} from "./constants";
 import {getAverageColor} from "./lib/getAverageColor";
 
@@ -77,11 +76,11 @@ export function DropZone() {
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
-      bg="#ddd"
+      background={`radial-gradient(${
+        store.imageAverageColor || "transparent"
+      }, transparent)`}
       position="relative"
     >
-      <BackgroundImage />
-
       <Input
         id="file-pick"
         type="file"

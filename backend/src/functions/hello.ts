@@ -1,11 +1,21 @@
-import { Handler, HandlerContext, HandlerEvent } from '@netlify/functions';
+import { Handler } from '@netlify/functions';
+import dotenv from "dotenv";
+import { graphdb } from "./graphdb";
+dotenv.config();
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+// require('dotenv').config();
+console.log(process.env.NEO4J_CONNECTION)
 
-export const handler: Handler = async (event: HandlerEvent,
-    context: HandlerContext) => {
-    const rawNetlifyContext = context.clientContext?.custom.netlify;
-    const netlifyContext = Buffer.from(rawNetlifyContext, 'base64').toString('utf-8');
-    const { identity, user } = JSON.parse(netlifyContext);
-    console.log({ identity, user })
+// export const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
+export const handler: Handler = async () => {
+    // const result = await session.run("MATCH (n) RETURN n LIMIT 10")
+    await graphdb.createPerson("Arash", "arash@example.org")
+    await graphdb.createPerson("Maria", "maria@example.org")
+    await graphdb.createRelationship("Arash", "Maria", "knows")
+    await graphdb.createRelationship("Maria", "Arash", "likes")
+
+    graphdb.findPersonByEmail("arash@example.org").then(console.log)
+    // graphdb.matchRelationship("Arash", "Maria", "likes").then(console.log)
 
     return {
         statusCode: 200,
