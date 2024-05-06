@@ -19,17 +19,15 @@ export function App() {
   return (
     <Flex flex={1} flexDirection="column">
       <div data-netlify-identity-menu></div>
-      <div data-netlify-identity-button onClick={() => netlifyIdentity.open()}>
-        Login with Netlify Identity
-      </div>
+      {user === null && (
+        <div onClick={() => netlifyIdentity.open()}>
+          Login with Netlify Identity
+        </div>
+      )}
 
-      <Flex
-        data-netlify-identity-logout
-        onClick={() => netlifyIdentity.logout()}
-      >
-        Logout
-      </Flex>
-
+      {user !== null && (
+        <Flex onClick={() => netlifyIdentity.logout()}>Logout</Flex>
+      )}
       <Header />
       <DropZone />
     </Flex>
