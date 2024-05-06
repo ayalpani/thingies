@@ -112,7 +112,7 @@ export function DropZone() {
               maxWidth="100%"
               maxHeight={`calc(100vh - ${constants.headerHeight}px)`}
               objectFit="contain" // Maintain aspect ratio
-              outline="1px solid rgba(0,0,0,0.2)"
+              outline="1px solid rgba(0,0,0,0.5)"
             />
             <BoundingBoxes />
           </Flex>

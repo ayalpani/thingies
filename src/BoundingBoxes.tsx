@@ -12,8 +12,8 @@ export function BoundingBoxes() {
           className="BoundingBox"
           key={index}
           position="absolute"
-          border="2px solid red"
-          backgroundColor="rgba(255, 0, 0, 0.3)"
+          outline="2px solid rgba(255, 0, 0, 0.5)"
+          backgroundColor="rgba(255, 0, 0, 0.2)"
           left={`${obj.boundingBox.x * 100}%`}
           top={`${obj.boundingBox.y * 100}%`}
           width={`${obj.boundingBox.width * 100}%`}
