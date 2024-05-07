@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.8.2",
     "@google-cloud/vision": "^4.2.1",
     "@types/netlify-identity-widget": "^1.9.6",
+    "dotenv": "^16.4.5",
     "neo4j-driver": "^5.20.0",
     "netlify-identity-widget": "^1.9.2",
     "react": "^18.2.0",
